@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="257.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RegisterController">
+   <children>
+      <Label layoutX="55.0" layoutY="73.0" style="-fx-text-fill: #ffffff; -fx-font-family: Gotham;" text="Registrarse">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="TFname" layoutX="55.0" layoutY="107.0" promptText="Nombre" style="-fx-background-color: rgba(100,100,100, 0.5);-fx-text-fill: #ffffff;" />
+      <TextField fx:id="TFuser" layoutX="55.0" layoutY="144.0" promptText="Nombre de Usuario" style="-fx-background-color: rgba(100,100,100, 0.5);-fx-text-fill: #ffffff;" />
+      <TextField fx:id="TFpassword" layoutX="55.0" layoutY="182.0" promptText="Contraseña" style="-fx-background-color: rgba(100,100,100, 0.5);-fx-text-fill: #ffffff;" />
+      <TextField fx:id="TFid" layoutX="55.0" layoutY="221.0" promptText="Identifiacion" style="-fx-background-color: rgba(100,100,100, 0.5);-fx-text-fill: #ffffff;" />
+      <Button fx:id="btnRegistrar" layoutX="55.0" layoutY="257.0" mnemonicParsing="false" onAction="#crearUser" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #db0000; -fx-text-fill: #ffffff; -fx-font-family: Gotham;" text="Resgistrarse" />
+      <Button layoutX="142.0" layoutY="301.0" mnemonicParsing="false" onAction="#closeWindow" style="-fx-background-color: #00000000; -fx-text-fill: #ffffff; -fx-font-family: Gotham;" text="Iniciar Sesion" />
+      <Label layoutX="20.0" layoutY="305.0" style="-fx-text-fill: c4c3c3;" text="¿Ya estabas registrado?" />
+   </children>
+</AnchorPane>
