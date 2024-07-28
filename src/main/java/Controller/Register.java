@@ -2,7 +2,7 @@ package Controller;
 
 import AccessData.AccessData;
 import model.User;
-import view.RegisterController;
+import view.Controller.RegisterController;
 import java.sql.ResultSet;
 import java.util.regex.Pattern;
 
