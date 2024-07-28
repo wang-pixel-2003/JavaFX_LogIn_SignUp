@@ -1,6 +1,6 @@
 package view.Controller;
 
-import Controller.Login;
+import Controller.CLogIn;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,7 +28,7 @@ public class LoginController {
      * función para obtener los valores ingresados en el formularion de iniciar sesion y cambiar de ventana o alertar si los datos son incorrectos
      */
     public void login () throws IOException {
-        if (Login.checkUserPassword(TFuser.getText(),TFpassword.getText())){
+        if (CLogIn.checkUserPassword(TFuser.getText(),TFpassword.getText())){
             changeHomepage();
         } else {
             alert();
@@ -52,7 +52,7 @@ public class LoginController {
      * función para cambiar de ventana por la de Registro
      */
     public void changeRegistro() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("Register.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("SignUp.fxml"));
         Parent root = fxmlLoader.load();
         RegisterController controlador = fxmlLoader.getController();
         Scene scene = new Scene(root);
@@ -79,7 +79,7 @@ public class LoginController {
      * función para cambiar de ventana por la de Home page
      */
     public void changeHomepage() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("Homepage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("Dashboard.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();

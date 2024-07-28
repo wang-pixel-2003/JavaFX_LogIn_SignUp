@@ -1,6 +1,6 @@
 package view.Controller;
 
-import Controller.Register;
+import Controller.CSignUp;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,10 +23,10 @@ public class RegisterController {
     private String imagen = "Sin foto";
 
     /**
-     * función para obtener los datos del formulario de registro y enviarlos a Register
+     * función para obtener los datos del formulario de registro y enviarlos a SignUp
      */
     public void crearUser () {
-        Register.registerUser(TFname.getText(), TFuser.getText(), TFpassword.getText(),imagen, Integer.parseInt(TFid.getText()));
+        CSignUp.registerUser(TFname.getText(), TFuser.getText(), TFpassword.getText(),imagen, Integer.parseInt(TFid.getText()));
     }
 
     /**
@@ -66,7 +66,7 @@ public class RegisterController {
      * función para cerrar la ventana de registro y volver al iniciar sesion
      */
     public void closeWindow() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("Login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("LogIn.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();

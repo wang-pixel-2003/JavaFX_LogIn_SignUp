@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 /**
  * Controlador del log-in
  */
-public class Login {
+public class CLogIn {
     //esta variable guarda el nombre del usuario que logro inciar sesion
     public static String userConnected;
 

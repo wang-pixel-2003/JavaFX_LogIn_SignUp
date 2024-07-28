@@ -1,7 +1,7 @@
 package Controller;
 
 import AccessData.AccessData;
-import model.User;
+import model.MUser;
 import view.Controller.RegisterController;
 import java.sql.ResultSet;
 import java.util.regex.Pattern;
@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 /**
  * Controlador de registro
  */
-public class Register {
+public class CSignUp {
     private static final String passwordFormat = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{6,8}$";
     private static final Pattern passwordPattern = Pattern.compile(passwordFormat);
 
@@ -24,7 +24,7 @@ public class Register {
     public static void registerUser (String name, String userName, String password,String imagen, int ide)  {
         if (!checkUsername(userName)) {
             if (checkPassword(password)){
-                User nuevoUser= (new User(name, userName, password,imagen, ide));
+                MUser nuevoUser= (new MUser(name, userName, password,imagen, ide));
                 AccessData.insertUser(nuevoUser.getUserName(),String.valueOf(nuevoUser.getIde()),nuevoUser.getName(),nuevoUser.getPassword());
                 RegisterController.alertSuccessfullyRegistered();
             } else RegisterController.alertPasswordInvalid();
