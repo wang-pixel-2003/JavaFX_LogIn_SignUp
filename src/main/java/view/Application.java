@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("Login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("SignUp.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 258, 292);
         stage.setTitle("Daily_Task");
         stage.setScene(scene);

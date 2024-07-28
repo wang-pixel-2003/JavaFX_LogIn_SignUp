@@ -3,23 +3,23 @@ package model;
 import java.util.Objects;
 
 /**
- * Clase User
+ * Clase MUser
  */
-public class User {
+public class MUser {
     private String name;
     private String userName;
     private String password;
     private int ide;
 
     /**
-     * Constructor de la clase User
+     * Constructor de la clase MUser
      * @param name Nombre completo del usuario
      * @param userName Nombre de usuario
      * @param password Contraseña
      * @param profilePic Ubicacion de la foto de perfil
      * @param ide Identificacion
      */
-    public User(String name, String userName, String password, String profilePic, int ide) {
+    public MUser(String name, String userName, String password, String profilePic, int ide) {
         this.name = name;
         this.userName = userName;
         this.password = password;
@@ -33,7 +33,7 @@ public class User {
      * @param password Contraseña
      * @param ide Identificacion
      */
-    public User(String name, String userName, String password, int ide) {
+    public MUser(String name, String userName, String password, int ide) {
         this.name = name;
         this.userName = userName;
         this.password = password;
@@ -80,8 +80,8 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
-        User usuario = (User) o;
+        if (!(o instanceof MUser)) return false;
+        MUser usuario = (MUser) o;
         return getUserName().equals(usuario.getUserName());
     }
 
@@ -96,7 +96,7 @@ public class User {
      */
     @Override
     public String toString() {
-        return "User{" +
+        return "MUser{" +
                 "name='" + name + '\'' +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +

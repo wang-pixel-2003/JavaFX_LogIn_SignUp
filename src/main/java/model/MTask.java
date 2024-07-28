@@ -3,7 +3,7 @@ package model;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class Task {
+public class MTask {
 
     private Long taskId;
     private int userId;
@@ -15,10 +15,10 @@ public class Task {
     private LocalDateTime creationDate;
     private LocalDateTime updateDate;
 
-    public Task() {
+    public MTask() {
     }
 
-    public Task(Long taskId, int userId, String title, String description, Priority priority, Date dueDate, Status status, LocalDateTime creationDate, LocalDateTime updateDate) {
+    public MTask(Long taskId, int userId, String title, String description, Priority priority, Date dueDate, Status status, LocalDateTime creationDate, LocalDateTime updateDate) {
         this.taskId = taskId;
         this.userId = userId;
         this.title = title;
@@ -116,7 +116,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "CTask{" +
                 "taskId=" + taskId +
                 ", userId=" + userId +
                 ", title='" + title + '\'' +

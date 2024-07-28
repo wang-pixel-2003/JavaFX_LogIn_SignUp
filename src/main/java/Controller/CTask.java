@@ -1,4 +1,4 @@
 package Controller;
 
-public class Task {
+public class CTask {
 }
