@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller.TareaController">
+    <Label text="Hola @usuario!" />
+    <TableView fx:id="tablaTareas">
+        <columns>
+            <TableColumn text="Título" fx:id="columnaTitulo"/>
+            <TableColumn text="Descripción" fx:id="columnaDescripcion"/>
+            <TableColumn text="Prioridad" fx:id="columnaPrioridad"/>
+            <TableColumn text="Fecha de vencimiento" fx:id="columnaFechaVencimiento"/>
+            <TableColumn text="Estado" fx:id="columnaEstado"/>
+            <TableColumn text="Fecha de creación" fx:id="columnaFechaCreacion"/>
+            <TableColumn text="Fecha de modificación" fx:id="columnaFechaModificacion"/>
+            <TableColumn text="..." fx:id="columnaAcciones"/>
+        </columns>
+    </TableView>
+    <HBox spacing="10">
+        <Button text="Crear Tarea" onAction="#crearTarea"/>
+        <Button text="Salir" onAction="#salir"/>
+    </HBox>
+</VBox>

@@ -20,13 +20,20 @@ public class RegisterController {
     @FXML private TextField TFpassword;
     @FXML private TextField TFid;
     @FXML private Button btnRegistrar;
-    private String imagen = "Sin foto";
 
     /**
      * función para obtener los datos del formulario de registro y enviarlos a SignUp
      */
     public void crearUser () {
-        CSignUp.registerUser(TFname.getText(), TFuser.getText(), TFpassword.getText(),imagen, Integer.parseInt(TFid.getText()));
+        CSignUp.registerUser(TFname.getText(), TFuser.getText(), TFpassword.getText(), Integer.parseInt(TFid.getText()));
+    }
+
+    public static void alertFieldsEmpty() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setTitle("Error");
+        alert.setContentText("Por favor, rellene todos los campos.");
+        alert.showAndWait();
     }
 
     /**
@@ -47,9 +54,15 @@ public class RegisterController {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
-        alert.setContentText("La contraseña debe ser de 6 caracteres minimo y 8 maximo. Ademas debe estar conformada por una minuscula, una mayucula y un caracter especial");
+        alert.setContentText("La contraseña debe ser de 6 caracteres mínimo y 8 máximo. Además, debe estar conformada por una minúscula, una mayúscula y un carácter especial.");
+
+        // Establecer el tamaño mínimo de la alerta
+        alert.getDialogPane().setPrefWidth(400);
+        alert.getDialogPane().setPrefHeight(200); // Puedes ajustar estos valores según sea necesario
+
         alert.showAndWait();
     }
+
 
     /**
      * funcion muestra una alerta de que se registro el usuario exitosamente
@@ -59,6 +72,17 @@ public class RegisterController {
         alert.setHeaderText(null);
         alert.setTitle("Info");
         alert.setContentText("Usted se a registrado existosamente");
+        alert.showAndWait();
+    }
+
+    /**
+     * funcion muestra una alerta de que tiene problemas con el id de usuario
+     */
+    public static void alertIdTaken() {
+        Alert alert = new Alert(Alert.AlertType.ERROR); // Usualmente se usa ERROR para mensajes de error
+        alert.setHeaderText(null);
+        alert.setTitle("Error");
+        alert.setContentText("El ID está en uso.");
         alert.showAndWait();
     }
 

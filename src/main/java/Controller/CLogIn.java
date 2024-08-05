@@ -16,18 +16,11 @@ public class CLogIn {
      * @param password Contraseña ingresada
      * @return retorna un valor booleano para saber si este entró o no.
      */
-    public static boolean checkUserPassword(String userName, String password) { //On1
-        ResultSet users = AccessData.getAllUsers();
-        try{
-            while (users.next()){
-                if (users.getString("userName").equals(userName) && users.getString("password").equals(password)){
-                    userConnected = userName;
-                    return true;
-                }
-            }
-        } catch (Exception e){
-            e.printStackTrace();
+    public static boolean checkUserPassword(String userName, String password) {
+        boolean isAuthenticated = AccessData.checkUserPassword(userName, password);
+        if (isAuthenticated) {
+            userConnected = userName;
         }
-        return false;
+        return isAuthenticated;
     }
 }

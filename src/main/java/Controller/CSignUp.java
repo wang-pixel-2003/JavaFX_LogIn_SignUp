@@ -18,18 +18,25 @@ public class CSignUp {
      * @param name Nombre completo
      * @param userName Nombre de usuario
      * @param password Contraseña
-     * @param imagen Ubicacion de la foto de perfil
      * @param ide Identificacion
      */
-    public static void registerUser (String name, String userName, String password,String imagen, int ide)  {
+    public static void registerUser(String name, String userName, String password, Integer ide) {
+        // Verifica el nombre de usuario, la contraseña y el ID
         if (!checkUsername(userName)) {
-            if (checkPassword(password)){
-                MUser nuevoUser= (new MUser(name, userName, password,imagen, ide));
-                AccessData.insertUser(nuevoUser.getUserName(),String.valueOf(nuevoUser.getIde()),nuevoUser.getName(),nuevoUser.getPassword());
-                RegisterController.alertSuccessfullyRegistered();
-            } else RegisterController.alertPasswordInvalid();
-        } else RegisterController.alertUserName();
-
+            if (checkPassword(password)) {
+                if (!AccessData.isIdTaken(ide)) { // Verifica si el ID está en uso
+                    MUser nuevoUser = new MUser(name, userName, password, ide);
+                    AccessData.insertUser(nuevoUser.getUserName(), String.valueOf(nuevoUser.getIde()), nuevoUser.getName(), nuevoUser.getPassword());
+                    RegisterController.alertSuccessfullyRegistered();
+                } else {
+                    RegisterController.alertIdTaken(); // Alerta si el ID ya está en uso
+                }
+            } else {
+                RegisterController.alertPasswordInvalid();
+            }
+        } else {
+            RegisterController.alertUserName();
+        }
     }
 
     /**

@@ -9,25 +9,10 @@ public class MUser {
     private String name;
     private String userName;
     private String password;
-    private int ide;
+    private Integer ide;
 
     /**
      * Constructor de la clase MUser
-     * @param name Nombre completo del usuario
-     * @param userName Nombre de usuario
-     * @param password Contraseña
-     * @param profilePic Ubicacion de la foto de perfil
-     * @param ide Identificacion
-     */
-    public MUser(String name, String userName, String password, String profilePic, int ide) {
-        this.name = name;
-        this.userName = userName;
-        this.password = password;
-        this.ide = ide;
-    }
-
-    /**
-     * SobreCarga del constructor de la clase user sin utilizar la foto como parametro par usos practicos.
      * @param name Nombre completo del usuario
      * @param userName Nombre de usuario
      * @param password Contraseña
