@@ -79,7 +79,7 @@ public class LoginController {
      * función para cambiar de ventana por la de Home page
      */
     public void changeHomepage() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("Dashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("CrearTarea.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
