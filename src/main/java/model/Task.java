@@ -1,150 +1,109 @@
 package model;
 
-import javafx.beans.property.*;
-
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Task {
+    private int id;
+    private String title;
+    private String description;
+    private String priority;
+    private Date dueDate;
+    private String status;
+    private String tags;
+    private Date creationDate;
+    private Date modificationDate;
+    private int userId;
 
-    private IntegerProperty id;
-    private StringProperty title;
-    private StringProperty description;
-    private StringProperty priority;
-    private ObjectProperty<LocalDate> dueDate;
-    private StringProperty status;
-    private final ObjectProperty<LocalDate> creationDate;
-    private ObjectProperty<LocalDate> modificationDate;
-
-    // Constructor sin parámetros
-    public Task() {
-        this.id = new SimpleIntegerProperty();
-        this.title = new SimpleStringProperty();
-        this.description = new SimpleStringProperty();
-        this.priority = new SimpleStringProperty();
-        this.dueDate = new SimpleObjectProperty<>();
-        this.status = new SimpleStringProperty();
-        this.creationDate = new SimpleObjectProperty<>(LocalDate.now());
-        this.modificationDate = new SimpleObjectProperty<>(LocalDate.now());
+    public Task(int id, String title, String description, String priority, Date dueDate, String status, String tags, Date creationDate, Date modificationDate, int userId) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+        this.dueDate = dueDate;
+        this.status = status;
+        this.tags = tags;
+        this.creationDate = creationDate;
+        this.modificationDate = modificationDate;
+        this.userId = userId;
     }
 
-    // Constructor con parámetros
-    public Task(int id, String title, String description, String priority, LocalDate dueDate, String status) {
-        this.id = new SimpleIntegerProperty(id);
-        this.title = new SimpleStringProperty(title);
-        this.description = new SimpleStringProperty(description);
-        this.priority = new SimpleStringProperty(priority);
-        this.dueDate = new SimpleObjectProperty<>(dueDate);
-        this.status = new SimpleStringProperty(status);
-        this.creationDate = new SimpleObjectProperty<>(LocalDate.now());
-        this.modificationDate = new SimpleObjectProperty<>(LocalDate.now());
-    }
-
-    // Getters y setters para id
     public int getId() {
-        return id.get();
-    }
-
-    public void setId(int id) {
-        this.id.set(id);
-    }
-
-    public IntegerProperty idProperty() {
         return id;
     }
 
-    // Getters y setters para los demás campos
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTitle() {
-        return title.get();
-    }
-
-    public void setTitle(String title) {
-        if (title != null && !title.trim().isEmpty()) {
-            this.title.set(title);
-            this.modificationDate.set(LocalDate.now());
-        }
-    }
-
-    public StringProperty titleProperty() {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getDescription() {
-        return description.get();
-    }
-
-    public void setDescription(String description) {
-        if (description != null && !description.trim().isEmpty()) {
-            this.description.set(description);
-            this.modificationDate.set(LocalDate.now());
-        }
-    }
-
-    public StringProperty descriptionProperty() {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getPriority() {
-        return priority.get();
-    }
-
-    public void setPriority(String priority) {
-        if (priority != null && !priority.trim().isEmpty()) {
-            this.priority.set(priority);
-            this.modificationDate.set(LocalDate.now());
-        }
-    }
-
-    public StringProperty priorityProperty() {
         return priority;
     }
 
-    public LocalDate getDueDate() {
-        return dueDate.get();
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 
-    public void setDueDate(LocalDate dueDate) {
-        if (dueDate != null) {
-            this.dueDate.set(dueDate);
-            this.modificationDate.set(LocalDate.now());
-        }
-    }
-
-    public ObjectProperty<LocalDate> dueDateProperty() {
+    public Date getDueDate() {
         return dueDate;
     }
 
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
     public String getStatus() {
-        return status.get();
-    }
-
-    public void setStatus(String status) {
-        if (status != null && !status.trim().isEmpty()) {
-            this.status.set(status);
-            this.modificationDate.set(LocalDate.now());
-        }
-    }
-
-    public StringProperty statusProperty() {
         return status;
     }
 
-    public LocalDate getCreationDate() {
-        return creationDate.get();
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public ObjectProperty<LocalDate> creationDateProperty() {
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public LocalDate getModificationDate() {
-        return modificationDate.get();
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public void setModificationDate(LocalDate modificationDate) {
-        this.modificationDate.set(modificationDate);
-    }
-
-    public ObjectProperty<LocalDate> modificationDateProperty() {
+    public Date getModificationDate() {
         return modificationDate;
+    }
+
+    public void setModificationDate(Date modificationDate) {
+        this.modificationDate = modificationDate;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

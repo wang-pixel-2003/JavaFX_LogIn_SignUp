@@ -9,11 +9,11 @@ import java.util.List;
 public class CTask {
 
     // Agrega una nueva tarea a la base de datos
-    public void addTask(int id, String title, String description, String priority, LocalDate dueDate, String status) {
+   /* public void addTask(int id, String title, String description, String priority, LocalDate dueDate, String status) {
         Task newTask = new Task(id, title, description, priority, dueDate, status);
         AccessData.insertTask(newTask); // Inserta la tarea en la base de datos
         System.out.println("Task added: " + newTask.getTitle());
-    }
+    }*/
 
     // Recupera la lista de tareas desde la base de datos
     public List<Task> getTaskList() {
@@ -21,7 +21,7 @@ public class CTask {
     }
 
     // Actualiza una tarea existente en la base de datos
-    public void updateTask(Task task, String title, String description, String priority, LocalDate dueDate, String status) {
+    /*public void updateTask(Task task, String title, String description, String priority, LocalDate dueDate, String status) {
         // Actualiza los campos de la tarea
         task.setTitle(title);
         task.setDescription(description);
@@ -30,7 +30,7 @@ public class CTask {
         task.setStatus(status);
         AccessData.insertTask(task); // Guarda la tarea actualizada en la base de datos
         System.out.println("Task updated: " + task.getTitle());
-    }
+    }*/
 
     // Elimina una tarea de la base de datos
     public void deleteTask(Task task) {

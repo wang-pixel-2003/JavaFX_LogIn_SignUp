@@ -7,10 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.MUser;
 import model.Task;
 import AccessData.AccessData;
 
@@ -24,32 +26,34 @@ public class TareaController {
     @FXML private TableColumn<Task, String> columnaTitulo;
     @FXML private TableColumn<Task, String> columnaDescripcion;
     @FXML private TableColumn<Task, String> columnaPrioridad;
-    @FXML private TableColumn<Task, String> columnaFechaVencimiento;
+    @FXML private TableColumn<Task, Date> columnaFechaVencimiento;
     @FXML private TableColumn<Task, String> columnaEstado;
+    @FXML private TableColumn<Task, Date> columnaFechaCreacion;
+    @FXML private TableColumn<Task, Date> columnaFechaModificacion;
+    @FXML private Label labelUsuario;
 
     @FXML
     public void initialize() {
-        // Configurar las columnas para que usen las propiedades de Task
         columnaTitulo.setCellValueFactory(new PropertyValueFactory<>("title"));
         columnaDescripcion.setCellValueFactory(new PropertyValueFactory<>("description"));
         columnaPrioridad.setCellValueFactory(new PropertyValueFactory<>("priority"));
-        columnaFechaVencimiento.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDueDate().toString()));
+        columnaFechaVencimiento.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
         columnaEstado.setCellValueFactory(new PropertyValueFactory<>("status"));
-
-        // Cargar los datos desde la base de datos
-        cargarTareasDesdeBaseDeDatos();
+        columnaFechaCreacion.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
+        columnaFechaModificacion.setCellValueFactory(new PropertyValueFactory<>("modificationDate"));
+        cargarTareasDesdeBaseDeDatos(); // Cargar tareas al iniciar
     }
 
     private void cargarTareasDesdeBaseDeDatos() {
-        List<Task> listaTareas = AccessData.getAllTasks();
+        List<Task> listaTareas = AccessData.getAllTasks(); // Cambia a getAllTasks()
         ObservableList<Task> tareasObservableList = FXCollections.observableArrayList(listaTareas);
         tablaTareas.setItems(tareasObservableList);
     }
 
-    @FXML
+    /*@FXML
     private void crearTarea() {
         mostrarFormularioTarea(new Task());
-    }
+    }*/
 
     private void mostrarFormularioTarea(Task tarea) {
         try {

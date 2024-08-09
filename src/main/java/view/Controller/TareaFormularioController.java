@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import model.Task;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -59,7 +60,7 @@ public class TareaFormularioController {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
                 try {
                     LocalDate dueDate = LocalDate.parse(dueDateField.getText(), formatter);
-                    task.setDueDate(dueDate);
+                    task.setDueDate(Date.valueOf(dueDate));
                     System.out.println("Due Date: " + dueDate);
                 } catch (DateTimeParseException e) {
                     System.out.println("Incorrect date format: " + e.getMessage());

@@ -10,7 +10,7 @@ public class AccessData {
 
     private static final String URLconection = "jdbc:mysql://localhost:3306/newdb";
     private static final String userDataBase = "root";
-    private static final String passwordDataBase = "123456789";
+    private static final String passwordDataBase = "1234";
 
     static {
         try {
@@ -102,7 +102,7 @@ public class AccessData {
 
     public static List<Task> getAllTasks() {
         List<Task> tasks = new ArrayList<>();
-        String query = "SELECT * FROM `task`";
+        String query = "SELECT * FROM task"; // Asegúrate de que el nombre de la tabla sea correcto
         try (Connection conn = getConnection(); // Usar el método getConnection para manejar la conexión
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
@@ -112,8 +112,12 @@ public class AccessData {
                         rs.getString("title"),
                         rs.getString("description"),
                         rs.getString("priority"),
-                        rs.getDate("due_date").toLocalDate(),
-                        rs.getString("status")
+                        rs.getDate("due_date"),
+                        rs.getString("status"),
+                        rs.getString("tags"),
+                        rs.getDate("creation_date"),
+                        rs.getDate("modification_date"),
+                        rs.getInt("user_id")
                 );
                 tasks.add(task);
             }
@@ -124,7 +128,7 @@ public class AccessData {
         return tasks;
     }
 
-    public static void insertTask(Task task) {
+    /* public static void insertTask(Task task) {
         String query = "INSERT INTO task (title, description, priority, due_date, status, creation_date, modification_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = getConnection(); // Usar el método getConnection para manejar la conexión
              PreparedStatement pstmt = conn.prepareStatement(query)) {
@@ -158,5 +162,5 @@ public class AccessData {
             System.err.println("Error updating task: " + e.getMessage());
             e.printStackTrace();
         }
-    }
+    }*/
 }
