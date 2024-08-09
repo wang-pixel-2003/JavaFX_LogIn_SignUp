@@ -6,6 +6,12 @@
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller.TareaController" spacing="10">
     <Label fx:id="labelUsuario" text="Usuario"/>
     <TableView fx:id="tablaTareas">
@@ -19,4 +25,10 @@
             <TableColumn fx:id="columnaFechaModificacion" text="Fecha de Modificación" />
         </columns>
     </TableView>
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Agregar Tarea" onAction="#mostrarFormularioAgregar" />
+        <Button text="Actualizar Tarea" onAction="#mostrarFormularioActualizar" />
+        <Button text="Eliminar Tarea" onAction="#mostrarFormularioEliminar" />
+        <Button text="Salir" onAction="#salir" />
+    </HBox>
 </VBox>

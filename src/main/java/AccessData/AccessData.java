@@ -128,39 +128,51 @@ public class AccessData {
         return tasks;
     }
 
-    /* public static void insertTask(Task task) {
-        String query = "INSERT INTO task (title, description, priority, due_date, status, creation_date, modification_date) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        try (Connection conn = getConnection(); // Usar el método getConnection para manejar la conexión
-             PreparedStatement pstmt = conn.prepareStatement(query)) {
-            pstmt.setString(1, task.getTitle());
-            pstmt.setString(2, task.getDescription());
-            pstmt.setString(3, task.getPriority());
-            pstmt.setDate(4, Date.valueOf(task.getDueDate()));
-            pstmt.setString(5, task.getStatus());
-            pstmt.setDate(6, Date.valueOf(task.getCreationDate())); // Assuming Tarea has a getCreationDate() method
-            pstmt.setDate(7, Date.valueOf(task.getModificationDate())); // Assuming Tarea has a getModificationDate() method
-            pstmt.executeUpdate();
+    public static void insertTask(Task task) {
+        String query = "INSERT INTO task (title, description, priority, due_date, status, tags, creation_date, modification_date, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, task.getTitle());
+            ps.setString(2, task.getDescription());
+            ps.setString(3, task.getPriority());
+            ps.setDate(4, task.getDueDate());
+            ps.setString(5, task.getStatus());
+            ps.setString(6, task.getTags());
+            ps.setDate(7, task.getCreationDate());
+            ps.setDate(8, task.getModificationDate());
+            ps.setInt(9, task.getUserId());
+            ps.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Error inserting task: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     public static void updateTask(Task task) {
-        String query = "UPDATE task SET title = ?, description = ?, priority = ?, due_date = ?, status = ?, modification_date = ? WHERE id = ?";
-        try (Connection conn = getConnection(); // Usar el método getConnection para manejar la conexión
-             PreparedStatement pstmt = conn.prepareStatement(query)) {
-            pstmt.setInt(1, task.getId()); // Assuming Task has a getId() method
-            pstmt.setString(2, task.getTitle());
-            pstmt.setString(3, task.getDescription());
-            pstmt.setString(4, task.getPriority());
-            pstmt.setDate(5, Date.valueOf(task.getDueDate()));
-            pstmt.setString(6, task.getStatus());
-            pstmt.setDate(7, Date.valueOf(task.getModificationDate())); // Assuming Task has a getModificationDate() method
-            pstmt.executeUpdate();
+        String query = "UPDATE task SET title = ?, description = ?, priority = ?, due_date = ?, status = ?, tags = ?, modification_date = ? WHERE id = ?";
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, task.getTitle());
+            ps.setString(2, task.getDescription());
+            ps.setString(3, task.getPriority());
+            ps.setDate(4, task.getDueDate());
+            ps.setString(5, task.getStatus());
+            ps.setString(6, task.getTags());
+            ps.setDate(7, task.getModificationDate());
+            ps.setInt(8, task.getId());
+            ps.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Error updating task: " + e.getMessage());
             e.printStackTrace();
         }
-    }*/
+    }
+
+    public static void deleteTask(int taskId) {
+        String query = "DELETE FROM task WHERE id = ?";
+        try (Connection connection = getConnection();
+             PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setInt(1, taskId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
