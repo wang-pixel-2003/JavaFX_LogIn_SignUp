@@ -36,7 +36,7 @@ public class CalendarController implements Initializable {
     @FXML
     private FlowPane calendar;
 
-    @FXML private Button btnLogin;
+    @FXML private Button btnTareas;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -59,7 +59,7 @@ public class CalendarController implements Initializable {
         drawCalendar();
     }
 
-    public void changeHomepage() throws IOException {
+    public void changeToTareas() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("CrearTarea.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
@@ -68,7 +68,7 @@ public class CalendarController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
-        Stage myStage = (Stage) this.btnLogin.getScene().getWindow();
+        Stage myStage = (Stage) this.btnTareas.getScene().getWindow();
         myStage.close();
 
     }
@@ -166,6 +166,7 @@ public class CalendarController implements Initializable {
         return calendarActivityMap;
     }
 
+    //Aqui es donde van las tareas
     private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
         List<CalendarActivity> calendarActivities = new ArrayList<>();
         int year = dateFocus.getYear();

@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import model.MUser;
 import model.Task;
 import AccessData.AccessData;
+import view.Application;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -30,6 +31,8 @@ public class TareaController {
     @FXML private TableColumn<Task, Date> columnaFechaCreacion;
     @FXML private TableColumn<Task, Date> columnaFechaModificacion;
 
+    @FXML private Button btnCalendario;
+
     @FXML
     public void initialize() {
         columnaTitulo.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -40,6 +43,20 @@ public class TareaController {
         columnaFechaCreacion.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
         columnaFechaModificacion.setCellValueFactory(new PropertyValueFactory<>("modificationDate"));
         cargarTareasDesdeBaseDeDatos(); // Cargar tareas al iniciar
+    }
+
+    public void changeToCalendario() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("Calendario.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        stage.setScene(scene);
+        stage.show();
+
+        Stage myStage = (Stage) this.btnCalendario.getScene().getWindow();
+        myStage.close();
+
     }
 
     private void cargarTareasDesdeBaseDeDatos() {
