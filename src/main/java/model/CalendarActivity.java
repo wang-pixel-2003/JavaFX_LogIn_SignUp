@@ -6,11 +6,14 @@ public class CalendarActivity {
     private ZonedDateTime date;
     private String clientName;
     private Integer serviceNo;
+    private String title;
+
 
     public CalendarActivity(ZonedDateTime date, String clientName, Integer serviceNo) {
         this.date = date;
         this.clientName = clientName;
         this.serviceNo = serviceNo;
+        this.title = "";
     }
 
     public ZonedDateTime getDate() {
@@ -35,6 +38,14 @@ public class CalendarActivity {
 
     public void setServiceNo(Integer serviceNo) {
         this.serviceNo = serviceNo;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override
