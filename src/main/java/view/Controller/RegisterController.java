@@ -7,12 +7,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import view.Application;
 
+import java.io.File;
 import java.io.IOException;
-
 
 public class RegisterController {
     @FXML private TextField TFname;
@@ -20,12 +24,54 @@ public class RegisterController {
     @FXML private TextField TFpassword;
     @FXML private TextField TFid;
     @FXML private Button btnRegistrar;
+    @FXML private Label lbImagen;
+    private String imagen = "Sin foto";
 
-    /**
-     * función para obtener los datos del formulario de registro y enviarlos a SignUp
-     */
-    public void crearUser () {
-        CSignUp.registerUser(TFname.getText(), TFuser.getText(), TFpassword.getText(), Integer.parseInt(TFid.getText()));
+    public void crearUser() {
+        // Validar que todos los campos están llenos
+        if (TFname.getText().isEmpty() || TFuser.getText().isEmpty() || TFpassword.getText().isEmpty() || TFid.getText().isEmpty()) {
+            alertFieldsEmpty();
+            return;
+        }
+
+        // Validar que el campo ID es un número válido
+        Integer id;
+        try {
+            id = Integer.parseInt(TFid.getText());
+        } catch (NumberFormatException e) {
+            alertIdInvalid();
+            return;
+        }
+
+        // Llamar al método de registro
+        CSignUp.registerUser(TFname.getText(), TFuser.getText(), TFpassword.getText(), id, imagen);
+    }
+
+    public void buscarImagen() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Buscar Imagen");
+
+        // Agregar filtros para facilitar la búsqueda
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All Images", "*.*"),
+                new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("PNG", "*.png")
+        );
+
+        // Obtener la imagen seleccionada
+        File imgFile = fileChooser.showOpenDialog(null);
+        if (imgFile != null) {
+            try {
+                Image ImgCamisa = new Image(new File(imgFile.toString()).toURI().toString());
+                ImageView IVcamisa = new ImageView(ImgCamisa);
+                IVcamisa.setFitWidth(100);
+                IVcamisa.setFitHeight(105);
+                lbImagen.setGraphic(IVcamisa);
+                imagen = imgFile.toString();
+            } catch (Exception e) {
+                e.printStackTrace(); // Manejar error de carga de imagen
+            }
+        }
     }
 
     public static void alertFieldsEmpty() {
@@ -36,65 +82,53 @@ public class RegisterController {
         alert.showAndWait();
     }
 
-    /**
-     * función para crear una alerta en pantalla si el nombre de usuario ya se encuentra registrado
-     */
-    public static void alertUserName(){
+    public static void alertUserName() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
-        alert.setContentText("El nombre de usuario ya se encuentra registrado");
+        alert.setContentText("El nombre de usuario ya se encuentra registrado.");
         alert.showAndWait();
     }
 
-    /**
-     * función para crear una alerta en pantalla si la contraseña no cumple con el formato solicitado
-     */
-    public static void alertPasswordInvalid(){
+    public static void alertPasswordInvalid() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
         alert.setContentText("La contraseña debe ser de 6 caracteres mínimo y 8 máximo. Además, debe estar conformada por una minúscula, una mayúscula y un carácter especial.");
-
-        // Establecer el tamaño mínimo de la alerta
         alert.getDialogPane().setPrefWidth(400);
-        alert.getDialogPane().setPrefHeight(200); // Puedes ajustar estos valores según sea necesario
-
+        alert.getDialogPane().setPrefHeight(200);
         alert.showAndWait();
     }
 
-
-    /**
-     * funcion muestra una alerta de que se registro el usuario exitosamente
-     */
     public static void alertSuccessfullyRegistered() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
         alert.setTitle("Info");
-        alert.setContentText("Usted se a registrado existosamente");
+        alert.setContentText("Usted se ha registrado exitosamente.");
         alert.showAndWait();
     }
 
-    /**
-     * funcion muestra una alerta de que tiene problemas con el id de usuario
-     */
     public static void alertIdTaken() {
-        Alert alert = new Alert(Alert.AlertType.ERROR); // Usualmente se usa ERROR para mensajes de error
+        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setTitle("Error");
         alert.setContentText("El ID está en uso.");
         alert.showAndWait();
     }
 
-    /**
-     * función para cerrar la ventana de registro y volver al iniciar sesion
-     */
+    public static void alertIdInvalid() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setTitle("Error");
+        alert.setContentText("El ID debe ser un número válido.");
+        alert.showAndWait();
+    }
+
     public void closeWindow() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("LogIn.fxml"));
         Parent root = fxmlLoader.load();
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 270, 300);
         Stage stage = new Stage();
-
         stage.setScene(scene);
         stage.show();
 
