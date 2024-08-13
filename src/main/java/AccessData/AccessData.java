@@ -137,7 +137,11 @@ public class AccessData {
             ps.setString(3, task.getPriority());
             ps.setDate(4, task.getDueDate());
             ps.setString(5, task.getStatus());
-            ps.setString(6, task.getTags());
+            if (task.getTags() == null) {
+                ps.setNull(6, java.sql.Types.VARCHAR);
+            } else {
+                ps.setString(6, task.getTags());
+            }
             ps.setDate(7, task.getCreationDate());
             ps.setDate(8, task.getModificationDate());
             ps.setInt(9, task.getUserId());
@@ -156,7 +160,11 @@ public class AccessData {
             ps.setString(3, task.getPriority());
             ps.setDate(4, task.getDueDate());
             ps.setString(5, task.getStatus());
-            ps.setString(6, task.getTags());
+            if (task.getTags() == null) {
+                ps.setNull(6, java.sql.Types.VARCHAR);
+            } else {
+                ps.setString(6, task.getTags());
+            }
             ps.setDate(7, task.getModificationDate());
             ps.setInt(8, task.getId());
             ps.executeUpdate();

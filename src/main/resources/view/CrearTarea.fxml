@@ -21,6 +21,7 @@
             <TableColumn fx:id="columnaPrioridad" text="Prioridad" />
             <TableColumn fx:id="columnaFechaVencimiento" text="Fecha de Vencimiento" />
             <TableColumn fx:id="columnaEstado" text="Estado" />
+            <TableColumn fx:id="columnaTags" text="Tags" />
             <TableColumn fx:id="columnaFechaCreacion" text="Fecha de Creación" />
             <TableColumn fx:id="columnaFechaModificacion" text="Fecha de Modificación" />
         </columns>

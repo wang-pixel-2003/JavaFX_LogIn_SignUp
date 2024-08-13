@@ -27,6 +27,7 @@ public class TareaController {
     @FXML private TableColumn<Task, String> columnaPrioridad;
     @FXML private TableColumn<Task, Date> columnaFechaVencimiento;
     @FXML private TableColumn<Task, String> columnaEstado;
+    @FXML private TableColumn<Task, Date> columnaTags;
     @FXML private TableColumn<Task, Date> columnaFechaCreacion;
     @FXML private TableColumn<Task, Date> columnaFechaModificacion;
 
@@ -37,6 +38,7 @@ public class TareaController {
         columnaPrioridad.setCellValueFactory(new PropertyValueFactory<>("priority"));
         columnaFechaVencimiento.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
         columnaEstado.setCellValueFactory(new PropertyValueFactory<>("status"));
+        columnaTags.setCellValueFactory(new PropertyValueFactory<>("tags"));
         columnaFechaCreacion.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
         columnaFechaModificacion.setCellValueFactory(new PropertyValueFactory<>("modificationDate"));
         cargarTareasDesdeBaseDeDatos(); // Cargar tareas al iniciar
