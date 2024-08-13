@@ -149,7 +149,7 @@ public class CalendarController implements Initializable {
             }
 
             // Crear el texto de la actividad
-            Text text = new Text(calendarActivities.get(k).getClientName() + ", " + calendarActivities.get(k).getDate().toLocalTime());
+            Text text = new Text(calendarActivities.get(k).getClientName() );
             text.setWrappingWidth(rectangleWidth * 0.8); // Ajustar el texto al ancho del VBox
 
             // Usar TextFlow para permitir que el texto se ajuste a varias líneas

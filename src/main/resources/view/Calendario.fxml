@@ -40,5 +40,5 @@
             <Insets right="9.0" />
         </padding>
     </HBox>
-
+    <Button fx:id="btnTareas" layoutX="582.0" layoutY="24.0" mnemonicParsing="false" onAction="#changeToTareas" text="Tareas" />
 </AnchorPane>
