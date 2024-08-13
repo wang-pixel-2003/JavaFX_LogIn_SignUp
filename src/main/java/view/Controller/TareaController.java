@@ -1,5 +1,6 @@
 package view.Controller;
 
+import Controller.CLogIn;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -45,7 +46,8 @@ public class TareaController {
     }
 
     private void cargarTareasDesdeBaseDeDatos() {
-        List<Task> listaTareas = AccessData.getAllTasks(); // Cambia a getAllTasks()
+        int userId = CLogIn.userIdConnected;
+        List<Task> listaTareas = AccessData.getTasksByUserId(userId);
         ObservableList<Task> tareasObservableList = FXCollections.observableArrayList(listaTareas);
         tablaTareas.setItems(tareasObservableList);
     }

@@ -183,4 +183,34 @@ public class AccessData {
             e.printStackTrace();
         }
     }
+
+    public static List<Task> getTasksByUserId(int userId) {
+        List<Task> tasks = new ArrayList<>();
+        String query = "SELECT * FROM task WHERE user_id = ?";
+        try (Connection conn = getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setInt(1, userId);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Task task = new Task(
+                            rs.getInt("id"),
+                            rs.getString("title"),
+                            rs.getString("description"),
+                            rs.getString("priority"),
+                            rs.getDate("due_date"),
+                            rs.getString("status"),
+                            rs.getString("tags"),
+                            rs.getDate("creation_date"),
+                            rs.getDate("modification_date"),
+                            rs.getInt("user_id")
+                    );
+                    tasks.add(task);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error retrieving tasks: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return tasks;
+    }
 }
