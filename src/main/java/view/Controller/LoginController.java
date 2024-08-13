@@ -55,7 +55,7 @@ public class LoginController {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("SignUp.fxml"));
         Parent root = fxmlLoader.load();
         RegisterController controlador = fxmlLoader.getController();
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,  450, 400);
         Stage stage = new Stage();
 
         stage.setScene(scene);
@@ -64,6 +64,7 @@ public class LoginController {
         stage.setOnCloseRequest(e-> {
             try {
                 controlador.closeWindow();
+
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }

@@ -32,14 +32,15 @@ public class AccessData {
      * @param password Contraseña
      * @param ide      Identificacion
      */
-    public static void insertUser(String userName,String ide, String name, String password){
+    public static void insertUser(String userName,String ide, String name, String password,String profilePic){
         try (Connection connection = getConnection()) {
-            String query = "INSERT INTO users (name, userName, password, ide) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO users (name, userName, password, ide, profilePic) VALUES (?, ?, ?, ?, ?)";
             try (PreparedStatement ps = connection.prepareStatement(query)) {
                 ps.setString(1, name);
                 ps.setString(2, userName);
                 ps.setString(3, password);
                 ps.setString(4, ide);
+                ps.setString(5,profilePic);
                 ps.executeUpdate();
             }
         } catch (SQLIntegrityConstraintViolationException e) {
