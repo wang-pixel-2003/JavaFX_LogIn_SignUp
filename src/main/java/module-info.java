@@ -17,4 +17,7 @@ module com.example.servidor {
     exports view;
     exports view.Controller;
     opens view.Controller to javafx.fxml;
+
+    opens model to javafx.base;
+    exports model;
 }
