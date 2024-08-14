@@ -1,5 +1,6 @@
 package view.Controller;
 
+import Controller.CLogIn;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -183,7 +184,8 @@ public class CalendarController implements Initializable {
 
 
     private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
-        List<Task> listTasks = AccessData.getAllTasks();
+        int userId = CLogIn.userIdConnected;
+        List<Task> listTasks = AccessData.getTasksByUserId(userId);
         List<CalendarActivity> calendarActivities = new ArrayList<>();
         int year = dateFocus.getYear();
         int month = dateFocus.getMonth().getValue();

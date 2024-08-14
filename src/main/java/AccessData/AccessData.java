@@ -10,7 +10,7 @@ public class AccessData {
 
     private static final String URLconection = "jdbc:mysql://localhost:3306/newdb";
     private static final String userDataBase = "root";
-    private static final String passwordDataBase = "Amse_1701!";
+    private static final String passwordDataBase = "";
 
     static {
         try {
