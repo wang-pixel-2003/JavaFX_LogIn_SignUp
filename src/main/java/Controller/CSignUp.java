@@ -20,13 +20,19 @@ public class CSignUp {
      * @param password Contraseña
      * @param ide Identificacion
      */
-    public static void registerUser(String name, String userName, String password, Integer ide) {
+    public static void registerUser(String name, String userName, String password, Integer ide, String profilePic) {
+        // Verifica campos vacíos
+        if (checkEmptyFields(name, userName, password, ide, profilePic)) {
+            RegisterController.alertFieldsEmpty();
+            return;
+        }
+
         // Verifica el nombre de usuario, la contraseña y el ID
         if (!checkUsername(userName)) {
             if (checkPassword(password)) {
                 if (!AccessData.isIdTaken(ide)) { // Verifica si el ID está en uso
-                    MUser nuevoUser = new MUser(name, userName, password, ide);
-                    AccessData.insertUser(nuevoUser.getUserName(), String.valueOf(nuevoUser.getIde()), nuevoUser.getName(), nuevoUser.getPassword());
+                    MUser nuevoUser = new MUser(name, userName, password, ide, profilePic);
+                    AccessData.insertUser(nuevoUser.getUserName(), String.valueOf(nuevoUser.getIde()), nuevoUser.getName(), nuevoUser.getPassword(), nuevoUser.getProfilePic());
                     RegisterController.alertSuccessfullyRegistered();
                 } else {
                     RegisterController.alertIdTaken(); // Alerta si el ID ya está en uso
@@ -37,6 +43,23 @@ public class CSignUp {
         } else {
             RegisterController.alertUserName();
         }
+    }
+
+    /**
+     * Verifica si alguno de los campos está vacío
+     * @param name Nombre completo
+     * @param userName Nombre de usuario
+     * @param password Contraseña
+     * @param ide Identificación
+     * @param profilePic URL o ruta de la imagen de perfil
+     * @return boolean verdadero si algún campo está vacío, falso si todos están completos.
+     */
+    private static boolean checkEmptyFields(String name, String userName, String password, Integer ide, String profilePic) {
+        return name == null || name.trim().isEmpty() ||
+                userName == null || userName.trim().isEmpty() ||
+                password == null || password.trim().isEmpty() ||
+                ide == null ||
+                profilePic == null || profilePic.trim().isEmpty();
     }
 
     /**

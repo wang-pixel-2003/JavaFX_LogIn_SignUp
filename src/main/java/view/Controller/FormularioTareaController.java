@@ -49,12 +49,12 @@ public class FormularioTareaController {
         String prioridad = txtPrioridad.getText();
         LocalDate fechaVencimiento = dpFechaVencimiento.getValue();
         String estado = txtEstado.getText();
-        String tags = txtTags.getText();
+        String tags = txtTags.getText().isEmpty() ? null : txtTags.getText();
         LocalDate fechaCreacion = dpFechaCreacion.getValue();
         LocalDate fechaModificacion = dpFechaModificacion.getValue();
         int userId = Integer.parseInt(txtUserId.getText());
 
-        if (titulo.isEmpty() || descripcion.isEmpty() || prioridad.isEmpty() || fechaVencimiento == null || estado.isEmpty() || tags.isEmpty() || fechaCreacion == null || fechaModificacion == null || txtUserId.getText().isEmpty()) {
+        if (titulo.isEmpty() || descripcion.isEmpty() || prioridad.isEmpty() || fechaVencimiento == null || estado.isEmpty() || fechaCreacion == null || fechaModificacion == null || txtUserId.getText().isEmpty()) {
             mostrarAlerta("Todos los campos son obligatorios.");
             return;
         }

@@ -4,27 +4,42 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox spacing="10" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller.TareaController">
-    <Label fx:id="labelUsuario" text="Usuario" />
-    <Button fx:id="btnCalendario" layoutX="582.0" layoutY="24.0" mnemonicParsing="false" onAction="#changeToCalendario" text="Calendario" />
-    <TableView fx:id="tablaTareas">
-        <columns>
-            <TableColumn fx:id="columnaTitulo" text="Título" />
-            <TableColumn fx:id="columnaDescripcion" text="Descripción" />
-            <TableColumn fx:id="columnaPrioridad" text="Prioridad" />
-            <TableColumn fx:id="columnaFechaVencimiento" text="Fecha de Vencimiento" />
-            <TableColumn fx:id="columnaEstado" text="Estado" />
-            <TableColumn fx:id="columnaFechaCreacion" text="Fecha de Creación" />
-            <TableColumn fx:id="columnaFechaModificacion" text="Fecha de Modificación" />
-        </columns>
-    </TableView>
-    <HBox alignment="CENTER" spacing="10">
-        <Button onAction="#mostrarFormularioAgregar" text="Agregar Tarea" />
-        <Button onAction="#mostrarFormularioActualizar" text="Actualizar Tarea" />
-        <Button onAction="#mostrarFormularioEliminar" text="Eliminar Tarea" />
-        <Button onAction="#salir" text="Salir" />
-    </HBox>
-</VBox>
+<TitledPane animated="false" prefHeight="567.0" prefWidth="901.0" text="Daily Task" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller.TareaController">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="541.0" prefWidth="910.0">
+         <children>
+             <TableView fx:id="tablaTareas" layoutX="25.0" layoutY="93.0" prefHeight="350.0" prefWidth="850.0">
+                 <columns>
+                     <TableColumn fx:id="columnaTitulo" prefWidth="91.99999237060547" text="Título" />
+                     <TableColumn fx:id="columnaDescripcion" prefWidth="120.00003051757812" text="Descripción" />
+                     <TableColumn fx:id="columnaPrioridad" prefWidth="83.20001220703125" text="Prioridad" />
+                     <TableColumn fx:id="columnaFechaVencimiento" prefWidth="133.60003662109375" text="Fecha de Vencimiento" />
+                     <TableColumn fx:id="columnaEstado" prefWidth="80.00006103515625" text="Estado" />
+                     <TableColumn fx:id="columnaTags" minWidth="0.0" prefWidth="78.39996337890625" text="Tags" />
+                     <TableColumn fx:id="columnaFechaCreacion" prefWidth="113.60003662109375" text="Fecha de Creación" />
+                     <TableColumn fx:id="columnaFechaModificacion" prefWidth="152.7999267578125" text="Fecha de Modificación" />
+                 </columns>
+             </TableView>
+             <HBox alignment="CENTER" layoutX="274.0" layoutY="460.0" spacing="10">
+                 <Button onAction="#mostrarFormularioAgregar" text="Agregar Tarea" />
+                 <Button onAction="#mostrarFormularioActualizar" text="Actualizar Tarea" />
+                 <Button onAction="#mostrarFormularioEliminar" text="Eliminar Tarea" />
+                 <Button onAction="#salir" text="Salir" />
+             </HBox>
+            <Label layoutX="125.0" layoutY="19.0" prefHeight="60.0" prefWidth="750.0">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="25.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+  </content>
+</TitledPane>
+

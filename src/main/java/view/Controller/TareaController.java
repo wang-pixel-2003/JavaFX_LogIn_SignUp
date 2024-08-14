@@ -1,5 +1,6 @@
 package view.Controller;
 
+import Controller.CLogIn;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,6 +29,7 @@ public class TareaController {
     @FXML private TableColumn<Task, String> columnaPrioridad;
     @FXML private TableColumn<Task, Date> columnaFechaVencimiento;
     @FXML private TableColumn<Task, String> columnaEstado;
+    @FXML private TableColumn<Task, Date> columnaTags;
     @FXML private TableColumn<Task, Date> columnaFechaCreacion;
     @FXML private TableColumn<Task, Date> columnaFechaModificacion;
 
@@ -40,6 +42,7 @@ public class TareaController {
         columnaPrioridad.setCellValueFactory(new PropertyValueFactory<>("priority"));
         columnaFechaVencimiento.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
         columnaEstado.setCellValueFactory(new PropertyValueFactory<>("status"));
+        columnaTags.setCellValueFactory(new PropertyValueFactory<>("tags"));
         columnaFechaCreacion.setCellValueFactory(new PropertyValueFactory<>("creationDate"));
         columnaFechaModificacion.setCellValueFactory(new PropertyValueFactory<>("modificationDate"));
         cargarTareasDesdeBaseDeDatos(); // Cargar tareas al iniciar
@@ -60,7 +63,8 @@ public class TareaController {
     }
 
     private void cargarTareasDesdeBaseDeDatos() {
-        List<Task> listaTareas = AccessData.getAllTasks(); // Cambia a getAllTasks()
+        int userId = CLogIn.userIdConnected;
+        List<Task> listaTareas = AccessData.getTasksByUserId(userId);
         ObservableList<Task> tareasObservableList = FXCollections.observableArrayList(listaTareas);
         tablaTareas.setItems(tareasObservableList);
     }

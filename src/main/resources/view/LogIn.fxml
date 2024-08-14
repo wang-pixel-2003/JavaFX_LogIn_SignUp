@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller.LoginController">
+   <children>
+      <Label layoutX="48.0" layoutY="44.0" text="Iniciar Sesion">
+         <font>
+            <Font size="30.0" />
+         </font></Label>
+      <TextField fx:id="TFuser" layoutX="60.0" layoutY="99.0" promptText="User Name" />
+      <TextField fx:id="TFpassword" layoutX="60.0" layoutY="136.0" promptText="Password" />
+      <Button fx:id="btnLogin" layoutX="62.0" layoutY="171.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="149.0" text="Iniciar Sesion" />
+      <Button fx:id="btnCrear" layoutX="144.0" layoutY="230.0" mnemonicParsing="false" onAction="#changeRegistro" text="Registrase" />
+      <Label layoutX="48.0" layoutY="234.0" text="¿Ya te registrate?" />
+   </children>
+</AnchorPane>
