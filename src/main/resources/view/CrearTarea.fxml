@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<TitledPane animated="false" prefHeight="567.0" prefWidth="901.0" text="Daily Task" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller.TareaController">
+<TitledPane animated="false" prefHeight="567.0" prefWidth="901.0" text="Daily Task" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller.TareaController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="541.0" prefWidth="910.0">
          <children>
@@ -38,8 +38,8 @@
                </font>
             </Label>
             <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="25.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="btnCalendario" layoutX="48.0" layoutY="460.0" mnemonicParsing="false" onAction="#changeToCalendario" text="Calendario" />
          </children>
       </AnchorPane>
   </content>
 </TitledPane>
-
