@@ -6,21 +6,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller.RegisterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Controller.RegisterController">
    <children>
-      <Label layoutX="140.0" layoutY="34.0" style="-fx-text-fill: #ffffff; -fx-font-family: Gotham;" text="Registrarse">
+      <Label layoutX="140.0" layoutY="34.0" text="Registrarse">
          <font>
             <Font size="35.0" />
          </font>
       </Label>
-      <TextField fx:id="TFname" layoutX="56.0" layoutY="106.0" promptText="Nombre" style="-fx-background-color: rgba(100,100,100, 0.5);-fx-text-fill: #ffffff;" />
-      <TextField fx:id="TFuser" layoutX="56.0" layoutY="143.0" promptText="Nombre de Usuario" style="-fx-background-color: rgba(100,100,100, 0.5);-fx-text-fill: #ffffff;" />
-      <TextField fx:id="TFpassword" layoutX="56.0" layoutY="181.0" promptText="Contraseña" style="-fx-background-color: rgba(100,100,100, 0.5);-fx-text-fill: #ffffff;" />
-      <TextField fx:id="TFid" layoutX="56.0" layoutY="220.0" promptText="Identifiacion" style="-fx-background-color: rgba(100,100,100, 0.5);-fx-text-fill: #ffffff;" />
-      <Button fx:id="btnRegistrar" layoutX="56.0" layoutY="256.0" mnemonicParsing="false" onAction="#crearUser" prefHeight="26.0" prefWidth="327.0" style="-fx-background-color: #db0000; -fx-text-fill: #ffffff; -fx-font-family: Gotham;" text="Resgistrarse" />
-      <Button fx:id="btnSeleccionarImagen" layoutX="231.0" layoutY="105.0" mnemonicParsing="false" onAction="#buscarImagen" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: rgba(100,100,100, 0.5); -fx-text-fill: #ffffff;" text="Agregar Foto" />
-      <Button layoutX="240.0" layoutY="303.0" mnemonicParsing="false" onAction="#closeWindow" style="-fx-background-color: #00000000; -fx-text-fill: #ffffff; -fx-font-family: Gotham;" text="Iniciar Sesion" />
-      <Label layoutX="118.0" layoutY="307.0" style="-fx-text-fill: c4c3c3;" text="¿Ya estabas registrado?" />
+      <TextField fx:id="TFname" layoutX="56.0" layoutY="106.0" promptText="Nombre" />
+      <TextField fx:id="TFuser" layoutX="56.0" layoutY="143.0" promptText="Nombre de Usuario" />
+      <TextField fx:id="TFpassword" layoutX="56.0" layoutY="181.0" promptText="Contraseña" />
+      <TextField fx:id="TFid" layoutX="56.0" layoutY="220.0" promptText="Identifiacion" />
+      <Button fx:id="btnRegistrar" layoutX="56.0" layoutY="256.0" mnemonicParsing="false" onAction="#crearUser" prefHeight="26.0" prefWidth="327.0" text="Resgistrarse" />
+      <Button fx:id="btnSeleccionarImagen" layoutX="231.0" layoutY="105.0" mnemonicParsing="false" onAction="#buscarImagen" prefHeight="26.0" prefWidth="150.0" text="Agregar Foto" />
+      <Button layoutX="240.0" layoutY="303.0" mnemonicParsing="false" onAction="#closeWindow" text="Iniciar Sesion" />
+      <Label layoutX="107.0" layoutY="307.0" text="¿Ya estabas registrado?" />
       <Label fx:id="lbImagen" layoutX="231.0" layoutY="144.0" prefHeight="100.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
